@@ -16,10 +16,12 @@ Namespace SeleniumTesting
         Public Sub Initialization()
             Firefox = New FirefoxDriver(GECKO_FOLDER)
         End Sub
+    
         <TestCleanup()>
         Public Sub Termination()
             Firefox.Quit()
         End Sub
+    
         <TestMethod()> Public Sub GoogleSearch()
             Firefox.Navigate.GoToUrl(GOOGLE)
 
@@ -42,12 +44,14 @@ Namespace SeleniumTesting
 
             System.Threading.Thread.Sleep(2000)
         End Sub
+
         <TestMethod()> Public Sub GoogleSearchAndClickFirstLink()
             GoogleSearch()
             Firefox.FindElement(By.PartialLinkText(".com")).Click()
 
             System.Threading.Thread.Sleep(2000)
         End Sub
+
         Private Function PickSomeWords() As String
             Dim SearchTerms As Collection = New Collection
             Dim SearchTermCount As Integer
